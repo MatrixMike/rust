@@ -1,4 +1,7 @@
-struct Sheep { naked: bool, name: &'static str }
+//https://doc.rust-lang.org/rust-by-example/trait.html
+
+struct Sheep  { naked: bool, name: &'static str }
+struct Rabbit { naked: bool, name: &'static str }
 
 trait Animal {
     // Static method signature; `Self` refers to the implementor type.
@@ -24,6 +27,22 @@ impl Sheep {
             // Implementor methods can use the implementor's trait methods.
             println!("{} is already naked...", self.name());
         } else {
+			println!("{} gets a haircut!", self.name); self.naked = 
+			true;
+        }
+    }
+}
+
+impl Rabbit {
+    fn is_naked(&self) -> bool {
+        self.naked
+    }
+
+    fn stroke(&mut self) {
+        if self.is_naked() {
+            // Implementor methods can use the implementor's trait methods.
+            println!("{} is already naked...", self.name());
+        } else {
             println!("{} gets a haircut!", self.name);
 
             self.naked = true;
@@ -44,7 +63,7 @@ impl Animal for Sheep {
 
     fn noise(&self) -> &'static str {
         if self.is_naked() {
-            "baaaaah?"
+            "baaaaah? cold"
         } else {
             "baaaaah!"
         }
@@ -56,13 +75,41 @@ impl Animal for Sheep {
         println!("{} pauses briefly... {}", self.name, self.noise());
     }
 }
+impl Animal for Rabbit {
+    // `Self` is the implementor type: `Rabbit`.
+    fn new(name: &'static str) -> Rabbit {
+        Rabbit { name: name, naked: false }
+    }
 
+    fn name(&self) -> &'static str {
+        self.name
+    }
+
+    fn noise(&self) -> &'static str {
+        if self.is_naked() {
+            "baaaaah? cold"
+        } else {
+            "baaaaah!"
+        }
+    }
+    
+    // Default trait methods can be overridden.
+    fn talk(&self) {
+        // For example, we can add some quiet contemplation.
+        println!("{} pauses briefly... {}", self.name, self.noise());
+    }
+}
 fn main() {
-    // Type annotation is necessary in this case.
-    let mut dolly: Sheep = Animal::new("Dolly");
-    // TODO ^ Try removing the type annotations.
-
-    dolly.talk();
-    dolly.shear();
-    dolly.talk();
+	// Type annotation is necessary in this case. 
+	let mut dolly: Sheep  = Animal::new("Dolly"); 
+	let mut bunny: Rabbit = Animal::new("Bunny"); 
+	// TODO ^ Try removing the type annotations.
+    if dolly.is_naked() {
+		println!("true"); } else {
+			println!("false");
+		}
+	dolly.talk(); dolly.shear(); dolly.shear(); dolly.talk(); 
+	bunny.talk(); bunny.stroke();
+	println!("{}",dolly.name());
+	println!("{}",bunny.name());
 }
