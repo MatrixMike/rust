@@ -27,8 +27,17 @@ impl Sheep {
             // Implementor methods can use the implementor's trait methods.
             println!("{} is already naked...", self.name());
         } else {
-			println!("{} gets a haircut!", self.name); self.naked = 
-			true;
+			println!("{} gets a haircut!", self.name);
+			 self.naked = true;
+        }
+    }
+        fn fleece_grow(&mut self) {
+        if self.is_naked() {
+            // Implementor methods can use the implementor's trait methods.
+            println!("{} fleece has grown...", self.name());
+        } else {
+			println!("{} gets a haircut!", self.name);
+			 self.naked = false;
         }
     }
 }
@@ -108,7 +117,7 @@ fn main() {
 		println!("true"); } else {
 			println!("false");
 		}
-	dolly.talk(); dolly.shear(); dolly.shear(); dolly.talk(); 
+	dolly.talk(); dolly.shear(); dolly.shear(); dolly.shear(); dolly.fleece_grow(); dolly.talk(); 
 	bunny.talk(); bunny.stroke();
 	println!("{}",dolly.name());
 	println!("{}",bunny.name());
