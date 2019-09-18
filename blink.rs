@@ -1,10 +1,10 @@
 #![no_std]
 #![no_main]
 
-const WDTPW : u16 = 0x5A00;
-const WDTHOLD : u16 = 0x0080;
+const WDTPW: u16 = 0x5A00;
+const WDTHOLD: u16 = 0x0080;
 
-extern {
+extern "C" {
     static P1IN: u8;
     static mut P1OUT: u8;
     static mut P1DIR: u8;
@@ -26,9 +26,12 @@ pub fn start() {
     loop {
         P1OUT ^= 0b01000000;
         i = 0;
-        while i < 5000 {             i += 1;         }     } } 
-#[lang = "panic_fmt"] 
+        while i < 5000 {
+            i += 1;
+        }
+    }
+}
+#[lang = "panic_fmt"]
 fn panic_fmt() -> ! {
     loop {}
 }
-
