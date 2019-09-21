@@ -11,7 +11,8 @@ fn main() {
         .enumerate()
         .filter(|&(i, x)| (i + x) % 3 == 0) // first invocation
         .filter(|&(i, x)| (i + x) % 5 == 0) // copied above and changed - think fizz,buzz
-        .for_each(|(i, x)| println!("{} xx {}", i, x));
+        .for_each(|(i, x)| println!("{:3} xx {}", i, x));  
+        // println!("{:a3} xx {}", i, x) enable this for format help
     //     println!("asd");
     let lines_vec = vec!["hello,how", "are,you"];
     let words_vec = lines_vec
