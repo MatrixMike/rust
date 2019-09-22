@@ -117,7 +117,9 @@ fn main() {
 		println!("true"); } else {
 			println!("false");
 		}
-	dolly.talk(); dolly.shear(); dolly.shear(); dolly.shear(); dolly.fleece_grow(); dolly.talk(); 
+	dolly.talk(); dolly.shear(); 
+	dolly.shear(); dolly.shear(); 
+	dolly.fleece_grow(); dolly.talk(); 
 	bunny.talk(); bunny.stroke();
 	println!("{}",dolly.name());
 	println!("{}",bunny.name());
