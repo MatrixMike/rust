@@ -1,11 +1,11 @@
-#1/bin/bash
+#!/bin/bash
 
 for i in *.rs
-do echo $i
+do echo "$i"
 done
 
 for i in *.rs
-do echo $i ; rustc $i
+do echo "$i" ; rustc "$i"
 
 
 done
