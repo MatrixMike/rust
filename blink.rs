@@ -1,6 +1,6 @@
 #![no_std]
 #![no_main]
-
+#![feature(lang_items)]
 const WDTPW: u16 = 0x5A00;
 const WDTHOLD: u16 = 0x0080;
 

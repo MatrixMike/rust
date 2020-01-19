@@ -3,7 +3,7 @@ struct Fibonacci {
     next: u32,
 }
 
-// Implement `Iterator` for `Fibonacci`.
+/// Implement `Iterator` for `Fibonacci`.
 // The `Iterator` trait only requires a method to be defined for the `next` element.
 impl Iterator for Fibonacci {
     type Item = u32;
