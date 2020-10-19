@@ -11,4 +11,5 @@ fn main() {
     for x in &array {
         print!("{} ", x);
     }
+    println!();
 }
